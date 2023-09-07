@@ -2,3 +2,5 @@
 // An empty class Rectangle that defeines a Rectangle
 
 class Rectangle { }
+
+module.exports = Rectangle
