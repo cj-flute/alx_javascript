@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// A class Rectangle that defines a rectangle
+// A class Sqaure that defines a square and inherits from the Rectangle of 4-rectangle.js
 
 class Rectangle {
     constructor(w = 0, h = 0) {
