@@ -33,8 +33,10 @@ class Rectangle {
 class Square extends Rectangle {
     constructor(w) {
         super(w);
-        this.width = w;
-        this.height = w;
+        if (w > 0) { 
+            this.width = w;
+            this.height = w;
+        }
     }
 }
 
