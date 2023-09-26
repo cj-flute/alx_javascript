@@ -21,12 +21,16 @@
         function setCookies() {
             const firstnameValue = document.getElementById("firstname").value;
             const emailValue = document.getElementById("email").value;
+            const d = new Date();
+            const exDate = 10;
+            d.setTime(d.getTime() + (exDate*24*60*60*1000));
+
+            let expire = `expires= ${d.toUTCString()}`
+
 
             // set cookies
-            document.cookie = `firstname = ${firstnameValue}`;
+            document.cookie = `firstname = ${firstnameValue}; ${expire};path=/`;
             document.cookie = `email = ${emailValue}`;
-
-            alert('cookies set successfully!');
         }
 
         function showCookies() {
