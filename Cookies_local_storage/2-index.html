@@ -23,7 +23,7 @@
             const emailValue = document.getElementById("email").value;
             const d = new Date();
             const exDate = 10;
-            d.setTime(d.getTime() + (exDate*24*60*60*1000));
+            d.setTime(d.getTime() + (exDate * 24 * 60 * 60 * 1000));
 
             let expire = `expires= ${d.toUTCString()}`
 
@@ -31,6 +31,21 @@
             // set cookies
             document.cookie = `firstname = ${firstnameValue}; ${expire};path=/`;
             document.cookie = `email = ${emailValue}; ${expire}; path=/`;
+            getCookie(firstnameValue);
+        }
+        function getCookie(name){
+            let cname = name + "=";
+            let cooky = document.cookie.split(';');
+            for(let i = 0; i < cooky.length; i++){
+                let c = cooky[i];
+                while (c.charAt(0) == ' '){
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0){
+                    return c.substring(cname.length, c.length)
+                }
+            }
+            return "";
         }
 
         function showCookies() {
