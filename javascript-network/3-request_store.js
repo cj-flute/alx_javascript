@@ -6,4 +6,4 @@ const fs = require('fs');
 const url = process.argv[2];
 
 request.get(url)
-    .pipe(fs.createWriteStream('body_response.html'));
+    .pipe(fs.createWriteStream('body_response.html', {encoding: 'utf-8'}));
