@@ -6,12 +6,12 @@ const fs = require('fs');
 const url = process.argv[2];
 const parts = [];
 
-request.get(url)
-    .on('data', (data) => {
-        parts.push(data);
+request.get(url, { encoding: 'utf-8'})
+    .on('body', (body) => {
+        parts.push(body);
     })
-    .on('complete', () => { 
-        const body_response = JSON.parse(parts);
+    .on('end', () => { 
+        const body_response = JSON.stringify(parts);
         console.log(body_response);
     })
-    .pipe(fs.createWriteStream('body_response.html', { encoding: 'utf-8' }))
+    .pipe(fs.createWriteStream('body_response.html'))
