@@ -10,8 +10,7 @@ request.get(url, { encoding: 'utf-8'})
     .on('body', (body) => {
         parts.push(body);
     })
-    .on('end', () => { 
+    .pipe(fs.createWriteStream('body_response.html'), (parts) => {
         const body_response = JSON.stringify(parts);
         console.log(body_response);
     })
-    .pipe(fs.createWriteStream('body_response.html'))
