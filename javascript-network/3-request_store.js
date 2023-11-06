@@ -6,7 +6,8 @@ const fs = require('fs');
 const url = process.argv[2];
 
 request.get(url)
-    .pipe(fs.createWriteStream('body_response.html'), (body) => {
+    .on('body', (body) => {
         const body_response = JSON.stringify(body);
         console.log(body_response);
     })
+    .pipe(fs.createWriteStream('body_response.html'))
