@@ -1,0 +1,56 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/Cookies_local_storage/src/index.js"></script>
+    <title>4-index.html</title>
+    <script src="https:/cdn.jsdelivr.net/npm/js-cookie@3.0.1/src/js.cookie.min.js"></script>
+
+</head>
+
+<body>
+    <div class="box">
+        <h1>Login to the website</h1>
+        <input type="text" placeholder="Firstname" id="firstname">
+        <input type="email" placeholder="Email" id="email">
+        <button id="btn1" onclick="setCookiesAndShowWelcomeMessage()">Log me in</button>
+
+        <h1>Cookies</h1>
+        <button id="btn2" onclick="showCookies()">show the cookies</button>
+        <div class="inner_box"></div>
+    </div>
+    <script>
+        function setCookies() {
+                const firstnameValue = document.getElementById("firstname").value;
+                const emailValue = document.getElementById("email").value;
+                const exDate = 10; // Expires in 10 days
+
+                // Set cookies using js-cookie
+                Cookies.set('firstname', firstnameValue, { expires: exDate, path: '/' });
+                Cookies.set('email', emailValue, { expires: exDate, path: '/' });
+
+                showWelcomeMessageOrForm();
+        }
+
+        function showCookies() {
+            const firstname = Cookies.get('firstname');
+            const email = Cookies.get('email');
+
+            const para = document.createElement("p");
+            para.innerHTML = `Cookies: Firstname - ${firstname}, Email - ${email}`;
+            document.querySelector('.inner_box').appendChild(para);
+        }
+        function setCookiesAndShowWelcomeMessage() {
+            setCookies();
+            showWelcomeMessageOrForm();
+        }
+        function deleteCookiesAndShowForm() {
+            Cookies.remove('firstname', { path: '/' });
+            Cookies.remove('email', { path: '/' });
+            showWelcomeMessageOrForm();
+        }
+    </script>
+</body>
+
+</html>
